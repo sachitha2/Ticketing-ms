@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: auth
-          image: 25992/ms-t-auth
+          image: us.gcr.io/ticketing-dev-331307/auth
 ---
 apiVersion: v1
 kind: Service
