@@ -1,17 +1,24 @@
 import express from 'express';
 import { json} from 'body-parser';
 
+import {currentUserRouter} from './routes/current-user';
+import {signupRouter} from './routes/signup';
+import {signoutRouter} from './routes/signout';
+import {signinRouter} from './routes/signin';
+
+import { errorHandler } from './middlewares/error-handler';
+
 const app = express();
 app.use(json());
 
-app.get('/api/users/currentuser',(req,res)=>{
-    res.send({
-        name:'Sourav',
-        age:21
-    });
-});
+app.use(currentUserRouter);
+app.use(signupRouter);
+app.use(signoutRouter);
+app.use(signinRouter);
+
+app.use(errorHandler);
 
 app.listen(3000, () => {
-    console.log('Server is running on port 3000 fejfhbebf');
+    console.log('Server is running on port 3000');
 });
 
