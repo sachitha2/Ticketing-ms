@@ -1,17 +1,25 @@
 import React from 'react'
 
 import {useState} from 'react'
-
+import axios from 'axios'
 
 
 function signup() {
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [err,setErr] = useState([]);
 
-
-    const onSubmit = (e)=>{
+    const onSubmit = async (e)=>{
         e.preventDefault();
-        console.log(email, password)
+        try{
+            const res = await axios.post('/api/users/signup', {email, password});
+
+            console.log(res.data);
+        }
+        catch(err){
+            console.log(err.response.data);
+            setErr(err.response.data.errors);
+        }
     }
     return (
         <div>
@@ -23,9 +31,17 @@ function signup() {
                 </div>
 
                 <div className="form-group">
-                    <label>Email Address</label>
+                    <label>password</label>
                     <input  value={password} onChange={e => setPassword(e.target.value)}  type="password" className="form-control" />
                 </div>
+                {err.length > 0 && (<div className="alert alert-danger">
+                    <h4>Oooops</h4>
+                    <ul className="my-0">
+                        {err.map(er => <li key={er.message}>{er.message}</li>)}
+
+                    </ul>
+
+                </div>)}
                 <button className="btn btn-primary">sign up</button>
             </form>
         </div>
