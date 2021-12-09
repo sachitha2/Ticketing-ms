@@ -1,7 +1,7 @@
 import React from 'react'
 import {useState} from 'react'
 import useRequest from '../../hooks/use-request';
-
+import Router from 'next/router';
 function signup() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -12,11 +12,12 @@ function signup() {
             email,
             password
         },
+        onSuccess: () => Router.push('/')
     });
 
     const onSubmit = async (e)=>{
         e.preventDefault();
-         doRequest();
+         await doRequest();
     }
     return (
         <div>
