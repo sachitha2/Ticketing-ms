@@ -4,7 +4,7 @@ import Router from 'next/router';
 export default () => {
     const { doRequest } = useRequest({
         url: '/api/users/signout',
-        method: 'post',
+        method: 'get',
         body: {},
         onSuccess: () => Router.push('/')
     });
