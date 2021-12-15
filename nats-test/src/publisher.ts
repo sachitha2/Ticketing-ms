@@ -1,4 +1,5 @@
 import nats from 'node-nats-streaming';
+import {TicketCreatedPublisher} from './events/ticket-created-publisher';
 
 console.clear();
 const client = nats.connect('ticketing','abc',{
