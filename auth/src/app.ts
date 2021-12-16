@@ -6,7 +6,6 @@ import {currentUserRouter} from './routes/current-user';
 import {signupRouter} from './routes/signup';
 import {signoutRouter} from './routes/signout';
 import {signinRouter} from './routes/signin';
-
 import { errorHandler,NotFoundError } from '@infiniteam/common';
 
 const app = express();
