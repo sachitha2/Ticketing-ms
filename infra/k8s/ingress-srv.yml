@@ -22,3 +22,10 @@ spec:
             backend:
               serviceName: client-srv
               servicePort: 3000
+    - host: test.ticketing.dev
+      http:
+        paths:
+          - path: /api/users/?(.*)
+            backend:
+              serviceName: auth-srv
+              servicePort: 3000
