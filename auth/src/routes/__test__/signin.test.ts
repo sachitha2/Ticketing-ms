@@ -36,7 +36,7 @@ it('responds with a cookie when given valid credentials ',async () => {
         email: 'test@test.com',
         password: 'password'
     })
-    .expect(200);
+    .expect(201);
 
     const response = await request(app)
     .post('/api/users/signin')
